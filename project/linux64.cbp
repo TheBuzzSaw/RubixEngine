@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Rubix (Linux)" />
+		<Option pch_mode="2" />
+		<Option compiler="clang" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/rubix" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../content" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="clang" />
+				<Compiler>
+					<Add option="-fsanitize=address" />
+					<Add option="-g" />
+					<Add directory="source" />
+					<Add directory="source/SDL2TK/OpenGL" />
+				</Compiler>
+				<Linker>
+					<Add option="-fsanitize=address" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/rubix" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../content" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="clang" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="source" />
+					<Add directory="source/SDL2TK/OpenGL" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-std=c++11" />
+			<Add directory="/usr/include/SDL2" />
+		</Compiler>
+		<Linker>
+			<Add library="SDL2_image" />
+			<Add library="SDL2" />
+			<Add library="GL" />
+			<Add library="openal" />
+			<Add library="GLEW" />
+		</Linker>
+		<Unit filename="../source/Action.hpp" />
+		<Unit filename="../source/LineSegment.hpp" />
+		<Unit filename="../source/Point.hpp" />
+		<Unit filename="../source/Rational.hpp" />
+		<Unit filename="../source/Rectangle.hpp" />
+		<Unit filename="../source/SDL2TK/Camera.hpp" />
+		<Unit filename="../source/SDL2TK/Matrix4x4.hpp" />
+		<Unit filename="../source/SDL2TK/Module.cpp" />
+		<Unit filename="../source/SDL2TK/Module.hpp" />
+		<Unit filename="../source/SDL2TK/OpenAL/AudioBuffer.cpp" />
+		<Unit filename="../source/SDL2TK/OpenAL/AudioBuffer.hpp" />
+		<Unit filename="../source/SDL2TK/OpenAL/AudioContext.cpp" />
+		<Unit filename="../source/SDL2TK/OpenAL/AudioContext.hpp" />
+		<Unit filename="../source/SDL2TK/OpenAL/AudioDevice.cpp" />
+		<Unit filename="../source/SDL2TK/OpenAL/AudioDevice.hpp" />
+		<Unit filename="../source/SDL2TK/OpenAL/AudioSource.cpp" />
+		<Unit filename="../source/SDL2TK/OpenAL/AudioSource.hpp" />
+		<Unit filename="../source/SDL2TK/OpenGL/Program.cpp" />
+		<Unit filename="../source/SDL2TK/OpenGL/Program.hpp" />
+		<Unit filename="../source/SDL2TK/OpenGL/ProgramBuilder.cpp" />
+		<Unit filename="../source/SDL2TK/OpenGL/ProgramBuilder.hpp" />
+		<Unit filename="../source/SDL2TK/OpenGL/Shader.cpp" />
+		<Unit filename="../source/SDL2TK/OpenGL/Shader.hpp" />
+		<Unit filename="../source/SDL2TK/OpenGL/ShaderProgram.cpp" />
+		<Unit filename="../source/SDL2TK/OpenGL/ShaderProgram.hpp" />
+		<Unit filename="../source/SDL2TK/Rotation.hpp" />
+		<Unit filename="../source/SDL2TK/Surface.cpp" />
+		<Unit filename="../source/SDL2TK/Surface.hpp" />
+		<Unit filename="../source/SDL2TK/TimeSpan.cpp" />
+		<Unit filename="../source/SDL2TK/TimeSpan.hpp" />
+		<Unit filename="../source/SDL2TK/Tools.cpp" />
+		<Unit filename="../source/SDL2TK/Tools.hpp" />
+		<Unit filename="../source/SDL2TK/Window.cpp" />
+		<Unit filename="../source/SDL2TK/Window.hpp" />
+		<Unit filename="../source/SDL2TK/WindowSettings.cpp" />
+		<Unit filename="../source/SDL2TK/WindowSettings.hpp" />
+		<Unit filename="../source/TestModule.cpp" />
+		<Unit filename="../source/TestModule.hpp" />
+		<Unit filename="../source/main.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
