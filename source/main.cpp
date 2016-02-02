@@ -1,5 +1,5 @@
 #include "SDL2TK/Window.hpp"
-#include "TestModule.hpp"
+#include "CubeModule.hpp"
 #include "Rectangle.hpp"
 #include <SDL_image.h>
 #include <vector>
@@ -47,7 +47,7 @@ int main(int argc, char** argv)
         }
 
         SDL2TK::WindowSettings settings;
-        settings.Title("CityCube");
+        settings.Title("Rubix Engine");
         settings.Width(1024);
         settings.Height(768);
 
@@ -61,7 +61,7 @@ int main(int argc, char** argv)
         if (v & GL_CONTEXT_FLAG_DEBUG_BIT)
             cerr << "DEBUG MODE\n";
 
-        TestModule module;
+        CubeModule module;
         window.Run(module);
     }
 

@@ -19,7 +19,7 @@ namespace SDL2TK
                 return _isRunning;
             }
 
-            inline const TimeSpan PulseInterval() const
+            inline TimeSpan PulseInterval() const
             {
                 return _pulseInterval;
             }

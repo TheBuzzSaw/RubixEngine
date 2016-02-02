@@ -51,6 +51,8 @@
 			<Add library="GLEW" />
 		</Linker>
 		<Unit filename="../source/Action.hpp" />
+		<Unit filename="../source/CubeModule.cpp" />
+		<Unit filename="../source/CubeModule.hpp" />
 		<Unit filename="../source/LineSegment.hpp" />
 		<Unit filename="../source/Point.hpp" />
 		<Unit filename="../source/Rational.hpp" />
@@ -86,8 +88,6 @@
 		<Unit filename="../source/SDL2TK/Window.hpp" />
 		<Unit filename="../source/SDL2TK/WindowSettings.cpp" />
 		<Unit filename="../source/SDL2TK/WindowSettings.hpp" />
-		<Unit filename="../source/TestModule.cpp" />
-		<Unit filename="../source/TestModule.hpp" />
 		<Unit filename="../source/main.cpp" />
 		<Extensions>
 			<code_completion />

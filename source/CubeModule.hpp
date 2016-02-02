@@ -1,16 +1,16 @@
-#ifndef TESTMODULE_HPP
-#define TESTMODULE_HPP
+#ifndef CUBEMODULE_HPP
+#define CUBEMODULE_HPP
 
 #include "SDL2TK/Module.hpp"
 #include "SDL2TK/Matrix4x4.hpp"
 #include "SDL2TK/OpenGL/ShaderProgram.hpp"
 #include "SDL2TK/Surface.hpp"
 
-class TestModule : public SDL2TK::Module
+class CubeModule : public SDL2TK::Module
 {
     public:
-        TestModule();
-        virtual ~TestModule();
+        CubeModule();
+        virtual ~CubeModule();
 
         virtual void OnOpen();
         virtual void OnClose();
@@ -32,6 +32,8 @@ class TestModule : public SDL2TK::Module
     protected:
     private:
         int _pulseCount = 0;
+        GLenum _caps[16];
+        int _capCount = 0;
 
         SDL2TK::ShaderProgram _simpleProgram;
         GLint _positionAttribute;
@@ -41,6 +43,7 @@ class TestModule : public SDL2TK::Module
         SDL2TK::RotationF _rotation;
 
         void LoadSimpleShaders();
+        void Push(GLenum cap);
 };
 
 #endif

@@ -1,31 +1,33 @@
-#include "TestModule.hpp"
+#include "CubeModule.hpp"
 #include "SDL2TK/Tools.hpp"
 #include <iostream>
 using namespace std;
 
-TestModule::TestModule()
+CubeModule::CubeModule()
 {
     LoadSimpleShaders();
+    Push(GL_BLEND);
+    Push(GL_DEPTH_TEST);
 }
 
-TestModule::~TestModule()
+CubeModule::~CubeModule()
 {
 }
 
-void TestModule::OnOpen()
+void CubeModule::OnOpen()
 {
     _simpleProgram.Use();
     glMatrixMode(GL_MODELVIEW);
+
+    for (int i = 0; i < _capCount; ++i) glEnable(_caps[i]);
 }
 
-void TestModule::OnClose()
+void CubeModule::OnClose()
 {
-    glDisable(GL_BLEND);
-    //glDisable(GL_DEPTH_TEST);
-    glDisable(GL_TEXTURE_2D);
+    for (int i = 0; i < _capCount; ++i) glEnable(_caps[_capCount - 1 - i]);
 }
 
-void TestModule::OnLoop()
+void CubeModule::OnLoop()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -67,7 +69,7 @@ void TestModule::OnLoop()
     glDisableVertexAttribArray(_positionAttribute);
 }
 
-void TestModule::OnPulse()
+void CubeModule::OnPulse()
 {
     ++_pulseCount;
 
@@ -80,7 +82,7 @@ void TestModule::OnPulse()
         .RotateZ(SDL2TK::RotationF::FromDegrees(-45.0f));
 }
 
-void TestModule::OnSecond(int framesPerSecond)
+void CubeModule::OnSecond(int framesPerSecond)
 {
     return;
     cout
@@ -91,28 +93,28 @@ void TestModule::OnSecond(int framesPerSecond)
     _pulseCount = 0;
 }
 
-void TestModule::OnKeyDown(const SDL_Keysym& keysym)
+void CubeModule::OnKeyDown(const SDL_Keysym& keysym)
 {
     Module::OnKeyDown(keysym);
 }
 
-void TestModule::OnKeyUp(const SDL_Keysym& keysym)
+void CubeModule::OnKeyUp(const SDL_Keysym& keysym)
 {
 }
 
-void TestModule::OnControllerAxis(const SDL_ControllerAxisEvent& event)
+void CubeModule::OnControllerAxis(const SDL_ControllerAxisEvent& event)
 {
 }
 
-void TestModule::OnControllerButtonDown(const SDL_ControllerButtonEvent& event)
+void CubeModule::OnControllerButtonDown(const SDL_ControllerButtonEvent& event)
 {
 }
 
-void TestModule::OnControllerButtonUp(const SDL_ControllerButtonEvent& event)
+void CubeModule::OnControllerButtonUp(const SDL_ControllerButtonEvent& event)
 {
 }
 
-void TestModule::OnResize(int width, int height)
+void CubeModule::OnResize(int width, int height)
 {
     glViewport(0, 0, width, height);
     glMatrixMode(GL_PROJECTION);
@@ -129,11 +131,16 @@ void TestModule::OnResize(int width, int height)
     glMatrixMode(GL_MODELVIEW);
 }
 
-void TestModule::LoadSimpleShaders()
+void CubeModule::LoadSimpleShaders()
 {
     _simpleProgram = SDL2TK::ShaderProgram::FromFiles(
         "simple.vertex.shader", "simple.fragment.shader");
 
     _positionAttribute = _simpleProgram.GetAttributeLocation("position");
     _colorAttribute = _simpleProgram.GetAttributeLocation("color");
+}
+
+void CubeModule::Push(GLenum cap)
+{
+    _caps[_capCount++] = cap;
 }
